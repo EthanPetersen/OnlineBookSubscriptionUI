@@ -1,0 +1,60 @@
+
+@if (showFilter) {
+  <div class="filtersBar" >
+    <mat-form-field class="filterInput">
+      <mat-label>Filter Search</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        [(ngModel)]="searchValue"
+        placeholder="Search Value"
+        #input
+      />
+    </mat-form-field>
+  </div>
+}
+<section class="table-container" tabindex="0">
+  <table mat-elevation-z8 mat-table [dataSource]="dataSource" matSort >
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Book Name</th>
+      <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+    </ng-container>
+
+     <ng-container matColumnDef="text">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+      <td mat-cell *matCellDef="let row">{{ row.text}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="purchasePrice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Purchase Price</th>
+      <td mat-cell *matCellDef="let row">{{ row.purchasePrice |currency:"R" }}</td>
+    </ng-container>
+
+     <ng-container matColumnDef="createdDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Created Date</th>
+      <td mat-cell *matCellDef="let row">{{ row.createdDate | date:'medium'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>Subscribe/Unsubscribe</th>
+        <td mat-cell *matCellDef="let row">
+        <button mat-mini-fab color="accent" (click)="subscribeToBook(row)">
+          <mat-icon>note_stack</mat-icon>
+        </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="10">
+        No books found
+      </td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="pagination"></mat-paginator>
+</section>

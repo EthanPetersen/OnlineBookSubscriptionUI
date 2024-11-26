@@ -1,0 +1,23 @@
+<div class="main-container">
+
+  <div class="navigation-box">
+    <mat-toolbar>
+      <img src="https://www.euromonitor.com/contentassets/a41bf905e5d842a8a462fac0324f0c97/euromonitorinternational_masterlogo_white_rgb_aw-1.png" class="logo" alt="Euromonitor International"/>
+      <div>Online Book Subscription Catalogue</div>
+         <!-- <button type="button" mat-button><mat-icon>login</mat-icon> Login</button> -->
+         <button type="button" mat-mini-fab color="primary" aria-label="Login" matTooltip="Login/Register" (click)="openLoginRegisterDialog()">
+          <mat-icon>login</mat-icon>
+        </button>
+
+    </mat-toolbar>
+  </div>
+
+  <div class="main-content">
+    <router-outlet/>
+  </div>
+
+  <footer class="footer-box">
+    <div><span class="activeUser">{{coreService.authenticatedUser == null ? "No User":coreService.authenticatedUser?.firstName+" "+ coreService.authenticatedUser?.lastName}}</span> is logged in</div>
+    <div>Copyright Euromonitor © {{2024}}</div>
+  </footer>
+</div>

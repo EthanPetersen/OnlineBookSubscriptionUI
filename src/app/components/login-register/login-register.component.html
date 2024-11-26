@@ -1,0 +1,76 @@
+
+<mat-dialog-content>
+  <mat-tab-group #tabGroup>
+    <mat-tab label="Login">
+        <form [formGroup]="loginFormCtrl" class="form-container">
+          <mat-form-field appearance="outline">
+              <mat-label>Email/Username:</mat-label>
+              <input matInput formControlName="username" placeholder="Email Address or Username">
+              <mat-icon matSuffix>login</mat-icon>
+              <mat-error>Username or Email is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+              <mat-label>Password:</mat-label>
+              <input type="password" formControlName="password" matInput placeholder="Enter your password">
+              <mat-error>Password is required</mat-error>
+          </mat-form-field>
+
+          <button type="button" mat-raised-button [disabled]="loginFormCtrl.invalid" (click)="login()" color="primary"><mat-icon>login</mat-icon> Sign In</button>
+
+          <button type="button" mat-raised-button  (click)="nextTab(tabGroup)" color="accent"><mat-icon>app_registration</mat-icon> Register</button>
+        </form>
+    </mat-tab>
+    <mat-tab label="Register">
+       <form [formGroup]="registerFormCtrl" class="form-container">
+
+        <div class="groupFormFieldsBox">
+          <mat-form-field appearance="outline">
+              <mat-label>First Name:</mat-label>
+              <input matInput formControlName="firstName" placeholder="First Name">
+              <mat-error>First Name is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+                <mat-label>Last Name:</mat-label>
+                <input matInput formControlName="lastName" placeholder="Surname">
+                <mat-error>Last Name is required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="groupFormFieldsBox">
+            <mat-form-field appearance="outline">
+              <mat-label>Username:</mat-label>
+              <input matInput formControlName="username" placeholder="Username">
+              <mat-error>Username is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+              <mat-label>Email:</mat-label>
+              <input type="email" matInput formControlName="email" placeholder="Email Address">
+              <mat-error>Valid Email is required</mat-error>
+        </mat-form-field>
+        </div>
+
+        <div class="groupFormFieldsBox">
+           <mat-form-field appearance="outline">
+              <mat-label>Password:</mat-label>
+              <input type="password" formControlName="password" matInput placeholder="Enter your password">
+              <mat-error>Password is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+              <mat-label>Confirm Password:</mat-label>
+              <input type="password" formControlName="confirmPassword" (change)="passwordMatchValidator()" matInput placeholder="Enter your password">
+              <mat-error>Password mismatch</mat-error>
+        </mat-form-field>
+        </div>
+
+
+        <button type="button" mat-raised-button [disabled]="registerFormCtrl.invalid"  (click)="registerUser()" color="primary"><mat-icon>app_registration</mat-icon> Register</button>
+
+        <button type="button" mat-raised-button  (click)="previousTab(tabGroup)" color="accent"><mat-icon>login</mat-icon> Sign In</button>
+        </form>
+
+    </mat-tab>
+  </mat-tab-group>
+</mat-dialog-content>

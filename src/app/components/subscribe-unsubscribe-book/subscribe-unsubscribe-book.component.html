@@ -1,0 +1,36 @@
+ <mat-dialog-content>
+ <form [formGroup]="bookFormCtrl" class="book-form-container">
+          <mat-form-field appearance="outline">
+              <mat-label>Book Name:</mat-label>
+              <input matInput formControlName="bookName" placeholder="Email Address or Username" readonly="true">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+              <mat-label>Description:</mat-label>
+              <textarea matInput formControlName="description" placeholder="Email Address or Username" readonly="true" rows="3"></textarea>
+          </mat-form-field>
+
+          <div class="groupFormFieldsBox">
+            <mat-form-field appearance="outline">
+                <mat-label>Create Date:</mat-label>
+                <input matInput formControlName="createdDate" placeholder="Email Address or Username" readonly="true">
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+                <mat-label>Purchase Price:</mat-label>
+                <input matInput formControlName="purchasePrice" placeholder="Email Address or Username" readonly="true">
+            </mat-form-field>
+          </div>
+</form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button type="button" mat-raised-button color="warn" mat-dialog-close><mat-icon>cancel</mat-icon> Cancel</button>
+  <button type="button" mat-raised-button color="primary" (click)="save()">
+    @if(alreadySubscribedToBook){
+      <mat-icon>bookmark_remove</mat-icon>
+    }<mat-icon>bookmark_add</mat-icon>
+    {{alreadySubscribedToBook ? "Unsubscribed":"Subscribe"}}
+  </button>
+</mat-dialog-actions>

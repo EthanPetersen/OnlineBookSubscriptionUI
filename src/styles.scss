@@ -1,1 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@include mat.core();
+
+ $special-primary: mat.define-palette(mat.$orange-palette);
+ $special-accent: mat.define-palette(mat.$brown-palette);
+ $special-theme: mat.define-light-theme((
+   color: (primary: $special-primary, accent: $special-accent),
+
+ ));
+
+
+@include mat.core-theme($special-theme);
+@include mat.all-component-themes($special-theme);
+@include mat.button-color($special-theme);
+
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: linear-gradient(hwb(0 100% 0% / 0.75), rgba(255, 255, 255, 0)),url(./assets/Images/patterns.png) !important;
+}
+
+:root{
+  --primary-color-1: #FF9E1B;
+  --primary-color-2: #b26600;
+  --primary-background: linear-gradient(to right, var(--primary-color-1),var(--primary-color-2)) !important;
+  --secondary-color-1: #34657F;
+  --primaryTextColor:#ffffff;
+
+}
+
+.mat-primary{
+  color: var(--primaryTextColor)  !important;
+}
+
+
+//Custom Table CSS
+.mat-mdc-header-row {
+  background-image: linear-gradient(to right, var(--primary-color-1),var(--primary-color-2)) !important;
+}
+
+.mat-mdc-header-cell {
+  border: 1px solid #dee2e6;
+  color: var(--primaryTextColor)   !important;
+}
+
+.mat-sort-header-container {
+    justify-content: center;
+}
+
+td, th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+//Adding strips to table
+.mat-mdc-row:nth-child(even) {
+    background-color: rgb(237 235 235);
+}
+
+//For fields ground inside one div
+.groupFormFieldsBox{
+  display: flex;
+  justify-content: space-around;
+}
+
+.groupFormFieldsBox .mat-mdc-form-field {
+  width: 48% !important;
+}
+
+//Mat dialog actions
+.mdc-dialog__actions {
+  justify-content: center !important;
+}

@@ -15,18 +15,16 @@ export const customInterceptor: HttpInterceptorFn = (req, next) => {
   const messageService = inject(MessageService);
 
 
-    loadingService.isLoadingSpinner.emit(true);
+  loadingService.isLoadingSpinner.emit(true);
 
-  if(!environment.production){
-      var token = cookieService.get("EPBookSubscription")
+  var token = cookieService.get("EPBookSubscription")
 
-      if(token){
-          req = req.clone({
-                setHeaders:{
-                  Authorization:'Bearer '+token
-                }
-      });
-      }
+  if(token){
+      req = req.clone({
+            setHeaders:{
+              Authorization:'Bearer '+token
+            }
+  });
   }
 
 

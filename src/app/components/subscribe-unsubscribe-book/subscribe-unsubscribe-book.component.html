@@ -28,9 +28,9 @@
 <mat-dialog-actions>
   <button type="button" mat-raised-button color="warn" mat-dialog-close><mat-icon>cancel</mat-icon> Cancel</button>
   <button type="button" mat-raised-button color="primary" (click)="save()">
-    @if(alreadySubscribedToBook){
-      <mat-icon>bookmark_remove</mat-icon>
-    }<mat-icon>bookmark_add</mat-icon>
+    @if(alreadySubscribedToBook){<mat-icon>bookmark_remove</mat-icon>}
+    @else { <mat-icon>bookmark_add</mat-icon>}
+
     {{alreadySubscribedToBook ? "Unsubscribed":"Subscribe"}}
   </button>
 </mat-dialog-actions>

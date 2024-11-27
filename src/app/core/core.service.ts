@@ -34,7 +34,7 @@ export class CoreService {
   }
 
   checkIfAlreadySubscribedToBook(bookId:number){
-    return this.listOfSubscriptionsActiveUser?.filter(b=>b.bookId == bookId)?.length > 1
+    return this.listOfSubscriptionsActiveUser?.filter(b=>b.bookId == bookId && b.active)?.length > 0
 
   }
 }
